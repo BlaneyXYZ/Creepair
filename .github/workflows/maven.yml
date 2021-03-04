@@ -8,9 +8,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
@@ -21,8 +19,9 @@ jobs:
       run: mvn clean package
     - uses: actions/upload-artifact@v1
       with:
-          name: Creepair
+          name: Creepair ${{ github.run_number }}
           path: |
+            target/Creepair/
             target/*.jar
-            target/Creepiar
+
         
