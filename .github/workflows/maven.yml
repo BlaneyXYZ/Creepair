@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Creepair Test Builds
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
       run: mvn clean package
     - uses: actions/upload-artifact@v2
       with:
-          name: Creepair -#${{ github.run_number }}
+          name: Creepair (#${{ github.run_number }})
           path: |
             target/Creepair/
             target/*.jar
