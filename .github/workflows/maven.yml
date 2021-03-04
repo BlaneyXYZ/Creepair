@@ -17,6 +17,13 @@ jobs:
         java-version: '11' # The JDK version to make available on the path.
     - name: Build with Maven
       run: mvn clean package
+    - name: Cache local Maven repository
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - uses: actions/upload-artifact@v2
       with:
           name: Creepair (#${{ github.run_number }})
